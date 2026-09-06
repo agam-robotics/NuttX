@@ -21,7 +21,8 @@
 # ##############################################################################
 
 set(SRCS mcxa1xx_port.c mcxa1xx_clockconfig.c mcxa1xx_irq.c mcxa1xx_gpio.c
-         mcxa1xx_gpiobase.c mcxa1xx_start.c mcxa1xx_timerisr.c)
+         mcxa1xx_gpiobase.c mcxa1xx_start.c mcxa1xx_timerisr.c
+         mcxa1xx_periphclock.c)
 
 if(CONFIG_MCXA1XX_GPIO_IRQ)
   list(APPEND SRCS mcxa1xx_gpioirq.c)
