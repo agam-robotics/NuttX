@@ -20,7 +20,7 @@
 #
 # ##############################################################################
 
-set(SRCS mcxa1xx_port.c)
+set(SRCS mcxa1xx_port.c mcxa1xx_clockconfig.c)
 
 if(CONFIG_MCXA1XX_GPIO_IRQ)
   list(APPEND SRCS mcxa1xx_gpioirq.c)

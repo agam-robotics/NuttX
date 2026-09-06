@@ -24,7 +24,7 @@ include armv8-m/Make.defs
 
 # MCX A1xx-specific C source files
 
-CHIP_CSRCS  = mcxa1xx_port.c
+CHIP_CSRCS  = mcxa1xx_port.c mcxa1xx_clockconfig.c
 
 ifeq ($(CONFIG_MCXA1XX_GPIO_IRQ),y)
   CHIP_CSRCS += mcxa1xx_gpioirq.c
