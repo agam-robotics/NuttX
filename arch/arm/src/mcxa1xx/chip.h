@@ -35,19 +35,24 @@
 
 /* Memory map.
  *
- * MCXA156 specifically (highest-memory part in the MCX A144-156 family):
- * 1024KB flash, 128KB SRAM (8KB of which is ECC-protected). Verified
- * against the family datasheet (MCXAP100M96FS6, Rev. 10). Flash/SRAM
- * base addresses follow the standard Cortex-M memory map, as used by
- * every other NuttX arch in this tree -- not chip-specific.
+ * The datasheet quotes "128 KB SRAM" for the MCXA156, but that total is
+ * NOT one contiguous region: it is 120KB of main SRAM at 0x20000000 plus
+ * a separate 8KB block (SRAMX) at 0x04000000. Taken from NXP's own
+ * linker script, devices/MCXA156/gcc/MCXA156_flash.ld in mcux-sdk:
+ *
+ *   m_text   0x00000200 length 0x000ffe00  (after the 0x200 vector table)
+ *   m_data   0x20000000 length 0x0001e000  (120KB)
+ *   m_sramx0 0x04000000 length 0x00002000  (8KB)
  */
 
 #define MCXA1XX_FLASH_BASE      0x00000000
 #define MCXA1XX_SRAM_BASE       0x20000000
+#define MCXA1XX_SRAMX_BASE      0x04000000
 
 #if defined(CONFIG_ARCH_CHIP_MCXA156)
 #  define MCXA1XX_FLASH_SIZE    (1024 * 1024)
-#  define MCXA1XX_SRAM_SIZE     (128 * 1024)
+#  define MCXA1XX_SRAM_SIZE     (120 * 1024)
+#  define MCXA1XX_SRAMX_SIZE    (8 * 1024)
 #else
 #  error "Unknown MCX A1xx chip"
 #endif
