@@ -132,7 +132,7 @@
  * 89 external interrupts (0..88) this part implements.
  */
 
-#define MCXA156_IRQ_NEXTINT      (89)
-#define NR_IRQS                  (MCXA1XX_IRQ_EXTINT + MCXA156_IRQ_NEXTINT)
+#define MCXA1XX_IRQ_NEXTINT      (89)
+#define NR_IRQS                  (MCXA1XX_IRQ_EXTINT + MCXA1XX_IRQ_NEXTINT)
 
 #endif /* __ARCH_ARM_INCLUDE_MCXA1XX_MCXA156_IRQ_H */
