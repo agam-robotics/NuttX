@@ -362,6 +362,14 @@ config ARCH_CHIP_MCX_NXXX
 	---help---
 		NXXx architectures (Cortex-M33)
 
+config ARCH_CHIP_MCXA1XX
+	bool "NXP MCX A1xx Cortex-M33"
+	select ARCH_CORTEXM33
+	select ARCH_HAVE_FPU
+	---help---
+		MCX A1xx architectures (Cortex-M33, single-precision FPU only,
+		no TrustZone, no MPU).
+
 config ARCH_CHIP_RA4
 	bool "Renesas RA4"
 	---help---
@@ -1212,6 +1220,7 @@ config ARCH_CHIP
 	default "cxd32xx"	if ARCH_CHIP_CXD32XX
 	default "csk6"		if ARCH_CHIP_CSK6
 	default "mcx-nxxx"	if ARCH_CHIP_MCX_NXXX
+	default "mcxa1xx"	if ARCH_CHIP_MCXA1XX
 
 config ARM_THUMB
 	bool "Thumb Mode"
@@ -1753,5 +1762,8 @@ source "arch/arm/src/cxd32xx/Kconfig"
 endif
 if ARCH_CHIP_MCX_NXXX
 source "arch/arm/src/mcx-nxxx/Kconfig"
+endif
+if ARCH_CHIP_MCXA1XX
+source "arch/arm/src/mcxa1xx/Kconfig"
 endif
 endif # ARCH_ARM

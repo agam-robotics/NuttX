@@ -1,0 +1,73 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+if ARCH_CHIP_MCXA1XX
+
+menu "MCX A1xx Chip Selection"
+
+choice
+	prompt "MCX A1xx Core Configuration"
+	default ARCH_CHIP_MCXA156
+
+config ARCH_CHIP_MCXA156
+	bool "MCXA156 Processor"
+	select ARCH_HAVE_RESET
+
+endchoice # MCX A1xx Chip Selection
+
+endmenu # "MCX A1xx Chip Selection"
+
+menu "MCXA1XX Peripheral Selection"
+
+config MCXA1XX_GPIO_IRQ
+	bool "GPIO Interrupt Support"
+	default y
+
+menu "LPUART"
+
+config MCXA1XX_LPUART
+	bool
+	default n
+	select ARCH_HAVE_SERIAL_TERMIOS
+
+config MCXA1XX_LPUART0
+	bool "LPUART0"
+	default n
+	select MCXA1XX_LPUART
+	select LPUART0_SERIALDRIVER
+
+config MCXA1XX_LPUART1
+	bool "LPUART1"
+	default n
+	select MCXA1XX_LPUART
+	select LPUART1_SERIALDRIVER
+
+config MCXA1XX_LPUART2
+	bool "LPUART2"
+	default n
+	select MCXA1XX_LPUART
+	select LPUART2_SERIALDRIVER
+
+config MCXA1XX_LPUART3
+	bool "LPUART3"
+	default n
+	select MCXA1XX_LPUART
+	select LPUART3_SERIALDRIVER
+
+config MCXA1XX_LPUART4
+	bool "LPUART4"
+	default n
+	select MCXA1XX_LPUART
+	select LPUART4_SERIALDRIVER
+
+endmenu # LPUART
+
+config MCXA1XX_FLEXCAN0
+	bool "FlexCAN0"
+	default n
+
+endmenu # MCXA1XX Peripheral Selection
+
+endif # ARCH_CHIP_MCXA1XX
