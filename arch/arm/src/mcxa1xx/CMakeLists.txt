@@ -28,6 +28,10 @@ if(CONFIG_MCXA1XX_LPUART)
   list(APPEND SRCS mcxa1xx_lpuart.c mcxa1xx_lowputc.c)
 endif()
 
+if(CONFIG_MCXA1XX_FLEXCAN0)
+  list(APPEND SRCS mcxa1xx_flexcan.c)
+endif()
+
 if(CONFIG_MCXA1XX_GPIO_IRQ)
   list(APPEND SRCS mcxa1xx_gpioirq.c)
 endif()

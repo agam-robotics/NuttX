@@ -32,6 +32,10 @@ ifeq ($(CONFIG_MCXA1XX_LPUART),y)
   CHIP_CSRCS += mcxa1xx_lpuart.c mcxa1xx_lowputc.c
 endif
 
+ifeq ($(CONFIG_MCXA1XX_FLEXCAN0),y)
+  CHIP_CSRCS += mcxa1xx_flexcan.c
+endif
+
 ifeq ($(CONFIG_MCXA1XX_GPIO_IRQ),y)
   CHIP_CSRCS += mcxa1xx_gpioirq.c
 endif

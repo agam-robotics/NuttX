@@ -58,6 +58,27 @@
 
 #define BOARD_LPUART_FREQUENCY 12000000
 
+/* FlexCAN ******************************************************************/
+
+/* CAN0 is clocked from FRO_12M, undivided. At 12 MHz a 1 Mbit/s bit time is
+ * 12 time quanta, which is within the usable range; the source is chosen for
+ * stability rather than resolution, so the bit timing does not move if the
+ * core frequency is retuned.
+ */
+
+#define BOARD_FLEXCAN_CLKSEL     MRCC_CLKSEL_FRO_12M
+#define BOARD_FLEXCAN_CLKDIV     1
+#define BOARD_FLEXCAN_FREQUENCY  12000000
+
+/* CAN0 pins on this board: P1_10 is CAN0_TXD and P1_11 is CAN0_RXD, both on
+ * ALT11 (verified against the MCXA156 pinout table and the AFV3 schematic).
+ * The RX pin needs its input buffer enabled.
+ */
+
+#define PIN_CAN0_TX  PORT_CFG(MCXA1XX_PORT1, 10, PORT_PCR_MUX_ALT11)
+#define PIN_CAN0_RX  PORT_CFG(MCXA1XX_PORT1, 11, PORT_PCR_MUX_ALT11 | \
+                                                 PORT_PCR_IBE)
+
 /* LED definitions **********************************************************/
 
 /* The Flo Range board drives a single status LED. Board logic maps the
